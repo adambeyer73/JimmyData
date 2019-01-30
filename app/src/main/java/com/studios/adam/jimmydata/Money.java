@@ -1,3 +1,8 @@
+package com.studios.adam.jimmydata;
+
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import java.util.*;
 import java.io.Serializable;
 import java.io.IOException;
@@ -7,7 +12,7 @@ import java.math.BigDecimal;
 import static java.math.BigDecimal.ZERO;
 import java.math.RoundingMode;
 
-/**borrowed kindly from http://www.javapractices.com/topic/TopicAction.do?Id=13**//
+/**Kindly borrowed this class from http://www.javapractices.com/topic/TopicAction.do?Id=13 ---- Thanks!!" **/
 
 /**
  * Represent an amount of money in any currency.
@@ -89,6 +94,8 @@ import java.math.RoundingMode;
  *  }</PRE>
  */
 public final class Money implements Comparable<Money>, Serializable {
+
+    //TOOK THIS WHOLE CLASS FROM A WEBSITE. It simplifies money representation and stores it ultimately as a Big Decimal
 
     /**
      * Thrown when a set of <code>Money</code> objects do not have matching currencies.
@@ -366,6 +373,7 @@ public final class Money implements Comparable<Money>, Serializable {
      * The {@link #eq(Money)} method, on the other hand, is <em>not</em>
      * sensitive to scale.
      */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean equals(Object aThat){
         if (this == aThat) return true;
         if (! (aThat instanceof Money) ) return false;
@@ -378,6 +386,7 @@ public final class Money implements Comparable<Money>, Serializable {
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public int hashCode(){
         return Objects.hash(getSigFields());
     }
